@@ -1085,7 +1085,7 @@ module.exports.CreateMpsServer = function (parent, db, args, certificates) {
                     if (len < 9) return 0;
                     var RecipientChannel = common.ReadInt(data, 1);
                     var LengthOfData = common.ReadInt(data, 5);
-                    if (SourceLen > 1048576) return -1;
+                    if (LengthOfData > 1048576) return -1;
                     if (len < (9 + LengthOfData)) return 0;
                     parent.debug('mpscmddata', '--> CHANNEL_DATA', RecipientChannel, LengthOfData);
                     var cirachannel = socket.tag.channels[RecipientChannel];
